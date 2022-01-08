@@ -15,15 +15,12 @@ class BukkitPlugin : JavaPlugin() {
 
         pubSub.statefulConnection.addListener(object : RedisPubSubAdapter<String, String>() {
             override fun message(channel: String, message: String) {
-                println("Received message: $channel - $message (no pattern)")
                 val player = server.getPlayerExact(message) ?: return
                 val inventory = encoder.encodeToString(serialize(player.inventory.contents))
                 redis.publish("cross-sync:inv:${player.name}", inventory)
             }
 
             override fun message(pattern: String, channel: String, message: String) {
-                println("Received message: $channel - $message ($pattern)")
-
                 val playerName = channel.removePrefix("cross-sync:inv:")
                 inventories[playerName] = deserialize(decoder.decode(message))
 

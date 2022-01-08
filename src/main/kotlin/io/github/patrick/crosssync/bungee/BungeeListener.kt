@@ -24,7 +24,6 @@ class BungeeListener(
     fun on(event: ServerConnectEvent) {
         println("${event.player.name} to ${event.target.name}")
         if (redis.get("cross-sync:ready:${event.player.name}") == "true") {
-            println("should save ${event.player.name} in ${event.player.server.info.name}")
             redis.publish("cross-sync:save", event.player.name)
         }
     }

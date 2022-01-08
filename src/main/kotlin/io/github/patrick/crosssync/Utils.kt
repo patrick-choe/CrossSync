@@ -10,7 +10,7 @@ import java.util.zip.GZIPInputStream
 import java.util.zip.GZIPOutputStream
 
 object Utils {
-    val REDIS = RedisClient.create("redis://localhost")
+    val REDIS: RedisClient = RedisClient.create("redis://localhost")
 
     fun serialize(inventory: Array<out ItemStack?>?): ByteArray {
         return ByteArrayOutputStream().use { stream ->

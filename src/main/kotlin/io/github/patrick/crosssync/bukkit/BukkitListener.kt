@@ -16,7 +16,6 @@ class BukkitListener(
 ) : Listener {
     @EventHandler
     fun on(event: AsyncPlayerPreLoginEvent) {
-        println("player(${event.name} - ${sync.get("cross-sync:ready:${event.name}")}")
         if (sync.get("cross-sync:ready:${event.name}") == "false") {
             sync.set("cross-sync:ready:${event.name}", "true")
         } else {
