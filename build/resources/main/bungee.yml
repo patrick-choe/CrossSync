@@ -1,4 +1,0 @@
-name: CrossSync
-main: io.github.patrick.crosssync.bungee.BungeePlugin
-version: 1.0-SNAPSHOT
-author: Patrick

@@ -20,6 +20,7 @@ class BukkitListener(
             sync.set("cross-sync:ready:${event.name}", "true")
         } else {
             if (completes[event.name] != true) {
+                println("lock")
                 val obj = Object()
                 blocks[event.name] = obj
                 synchronized(obj) {

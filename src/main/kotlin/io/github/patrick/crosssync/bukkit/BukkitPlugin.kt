@@ -27,6 +27,7 @@ class BukkitPlugin : JavaPlugin() {
                 completes[playerName] = true
                 blocks.remove(playerName)?.let { obj ->
                     synchronized(obj) {
+                        println("unlock")
                         obj.notifyAll()
                     }
                 }
