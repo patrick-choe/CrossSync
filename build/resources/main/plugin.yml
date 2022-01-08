@@ -1,0 +1,5 @@
+name: CrossSync
+main: io.github.patrick.crosssync.bukkit.BukkitPlugin
+version: 1.0-SNAPSHOT
+author: Patrick
+api-version: 1.18
