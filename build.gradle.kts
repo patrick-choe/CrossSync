@@ -19,8 +19,24 @@ repositories {
 
 dependencies {
     api(kotlin("stdlib"))
-    implementation("io.lettuce:lettuce-core:6.1.5.RELEASE")
+    api("io.lettuce:lettuce-core:6.1.5.RELEASE")
 
     compileOnly("io.papermc.paper:paper-api:1.18.1-R0.1-SNAPSHOT")
     compileOnly("io.github.waterfallmc:waterfall-api:1.18-R0.1-SNAPSHOT")
+}
+
+tasks {
+    create<Task>("copyToServer") {
+        dependsOn("copyToWaterfall", "copyToPaper")
+    }
+
+    create<Copy>("copyToWaterfall") {
+        from(shadowJar)
+        into("W:\\Servers\\waterfall\\plugins")
+    }
+
+    create<Copy>("copyToPaper") {
+        from(jar)
+        into("W:\\Servers\\waterfall\\servers\\plugins")
+    }
 }

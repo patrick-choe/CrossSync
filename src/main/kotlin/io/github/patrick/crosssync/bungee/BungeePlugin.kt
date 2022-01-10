@@ -8,11 +8,11 @@ class BungeePlugin : Plugin() {
     private val redis = redisConnection.sync()
 
     override fun onEnable() {
+        proxy.registerChannel("cross-sync:save")
         proxy.pluginManager.registerListener(this, BungeeListener(redis))
     }
 
     override fun onDisable() {
-        redis.shutdown(false)
         redisConnection.close()
     }
 }

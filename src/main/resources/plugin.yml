@@ -3,3 +3,6 @@ main: io.github.patrick.crosssync.bukkit.BukkitPlugin
 version: 1.0-SNAPSHOT
 author: Patrick
 api-version: 1.18
+libraries:
+  - org.jetbrains.kotlin:kotlin-stdlib:1.6.10
+  - io.lettuce:lettuce-core:6.1.5.RELEASE
