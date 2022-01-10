@@ -26,9 +26,7 @@ class BukkitPlugin : JavaPlugin() {
             val byteBufOut = FriendlyByteBuf(Unpooled.buffer())
             byteBufOut.writeUtf(player.name)
             byteBufOut.writeByteArray(inventory)
-            server.scheduler.runTaskLater(this, Runnable {
-                redis.publish("cross-sync:inv", encoder.encodeToString(byteBufOut.array()))
-            }, 100L)
+            redis.publish("cross-sync:inv", encoder.encodeToString(byteBufOut.array()))
         }
 
         pubSub.statefulConnection.addListener(object : RedisPubSubAdapter<String, String>() {
